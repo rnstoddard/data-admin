@@ -7,21 +7,19 @@ import 'rxjs/add/operator/map';
 
 import {environment} from '../../../../environments/environment';
 
-import {SR_Customer} from '../classes/SR_Customer';
+import {SR_Equip} from '../classes/SR_Equip';
 
 @Injectable()
-export class SrsCustomerService {
-  private apiURL = `${environment.srBaseApi}/customer`;
-
+export class SrEquipmentService {
+  private apiURL = `${environment.srBaseApi}/equip`;
   constructor(private http : Http) { }
 
-  public getAll(): Observable<SR_Customer[]>{
+  public getAll(): Observable<SR_Equip[]>{
     return this.http.get(this.apiURL)
                     .map(this.extractArray)
                     .catch(this.handleError);
   }
-
-  public getCustById(id:number): Observable<SR_Customer>{
+  public getEquipById(id:number): Observable<SR_Equip>{
     return this.http.get(`${this.apiURL}/${id}`)
                     .map(this.extractObject)
                     .catch(this.handleError);

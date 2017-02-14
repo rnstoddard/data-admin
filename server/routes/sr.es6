@@ -35,5 +35,15 @@ router.get('/issue/:issueId', (req, res) => {
     res.send(data);
   });
 });
+router.get('/equip', (req, res) => {
+  srService.equipInfo(undefined, (data)=>{
+    res.send(data);
+  });
+});
+router.get('/equip/:equipId', (req, res) => {
+  srService.equipInfo(req.params.equipId, (data)=>{
+    res.send(data);
+  });
+});
 
 module.exports = router;

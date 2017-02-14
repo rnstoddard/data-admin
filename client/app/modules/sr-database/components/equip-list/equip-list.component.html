@@ -1,0 +1,4 @@
+<div class="btn-group-verticle">
+  <a *ngFor="let item of pieces" routerLink="../equip/{{item.Eq_piece_id}}" class="btn btn-info">{{item.Model}}#{{item.SN}}</a>
+</div>
+<router-outlet></router-outlet>

@@ -24,6 +24,16 @@ class SR{
     this.query(qString,action);
   }
 
+  equipInfo(id, action){
+    let qString =
+    `SELECT * FROM \`srs-schema\`.equip_info
+      `;
+    if(id){
+      qString += ` WHERE Eq_piece_id = ${id};`
+    }
+    this.query(qString,action);
+  }
+
   srInfo(num, action){
     let qString =
     `SELECT *

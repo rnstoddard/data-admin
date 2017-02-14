@@ -5,11 +5,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
+import {environment} from '../../../../environments/environment';
+
 import {SR_SR_Num} from '../classes/SR_SR_Num';
 
 @Injectable()
 export class SrSrService {
-  private apiURL = "http://localhost:4040/api/sr/sr";
+  private apiURL = `${environment.srBaseApi}/sr`;
 
   constructor(private http : Http) { }
 

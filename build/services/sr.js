@@ -42,6 +42,15 @@ var SR = function () {
       this.query(qString, action);
     }
   }, {
+    key: 'equipInfo',
+    value: function equipInfo(id, action) {
+      var qString = 'SELECT * FROM `srs-schema`.equip_info\n      ';
+      if (id) {
+        qString += ' WHERE Eq_piece_id = ' + id + ';';
+      }
+      this.query(qString, action);
+    }
+  }, {
     key: 'srInfo',
     value: function srInfo(num, action) {
       var qString = 'SELECT *\n      FROM `srs-schema`.`sr_issue`\n      ';

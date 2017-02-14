@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
 
 import {SrSrService} from '../../services/sr-sr.service';
 import {SR_SR_Num} from '../../classes/SR_SR_Num';
 
 @Component({
-  selector: 'app-sr-list',
+  selector: 'sr-list',
   providers: [SrSrService],
   templateUrl: './sr-list.component.html',
   styleUrls: ['./sr-list.component.css']
@@ -23,4 +25,37 @@ export class SrListComponent implements OnInit {
       error =>{ console.log("this error was reached");}
     );
   }
+}
+
+@Component({
+  selector: 'sr-sr-info',
+  template:`
+  <p *ngIf="sr">
+  {{sr.Issue_id}}
+  {{sr.SR_num}}
+  {{sr.cust_info_Cust_id}}
+  </p>
+  `,
+  providers: [SrSrService],
+  styleUrls: ['./sr-sr-info.component.css']
+})
+export class SrSrInfoComponent implements OnInit {
+  sr :SR_SR_Num;
+
+  constructor(
+    private srService :SrSrService,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
+  this.router.events.subscribe((event)=>{ this.ngOnInit(); }); }
+
+  ngOnInit() {
+    let num = +this.route.snapshot.params['num'];
+    this.srService.getSrByNum(num).subscribe(
+      data => {
+        this.sr = data;},
+      error =>{ console.log("this error was reached");}
+    );
+  }
+
 }
