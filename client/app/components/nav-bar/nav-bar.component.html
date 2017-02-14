@@ -1,0 +1,11 @@
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="dashboard">Spirent Federal Systems</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li *ngFor="let link of links" class="{{link.classes}}" routerLinkActive="active"><a routerLink="{{link.href}}" >{{link.label}}</a></li>
+    </ul>
+  </div>
+</nav>

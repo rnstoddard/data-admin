@@ -1,0 +1,8 @@
+<ul class="pagination">
+  <li class="active"><a routerLink="../customers">Customers</a></li>
+  <li><a routerLink="../sr">SR Numbers</a></li>
+  <li><a routerLink="../issues">Issue Numbers</a></li>
+</ul>
+<div class="btn-group-verticle" id="customer-list">
+  <a *ngFor="let item of customers" routerLink="../customer/{{item.Cust_id}}" class="btn btn-info">{{item.Cust_name}}</a>
+</div>
