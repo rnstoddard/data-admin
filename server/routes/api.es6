@@ -1,7 +1,7 @@
 const http = require('http');
 const express = require('express');
 const router = express.Router();
-import sr from './sr';
+import sr from './sr/srRouter';
 
 /* GET api listing. */
 router.get('/', (req, res) => {

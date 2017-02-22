@@ -45,6 +45,20 @@ class SR{
     this.query(qString,action);
   }
 
+  srDetail(num, action){
+    let qString =
+    `SELECT * FROM \`srs-schema\`.sr_issue as sr
+    LEFT JOIN \`srs-schema\`.cust_info as ci
+    ON sr.cust_info_Cust_id = ci.Cust_id
+    LEFT JOIN \`srs-schema\`.issue_type_status as issue
+    ON sr.Issue_id = issue.Issue_id`
+    ;
+    if(num){
+      qString += ` WHERE SR_num = ${num};`
+    }
+    this.query(qString,action);
+  }
+
   //returns an array of customer information
     //if no id is given, then all customers are returned
     //if an id is specified, then returns the customer matching that id

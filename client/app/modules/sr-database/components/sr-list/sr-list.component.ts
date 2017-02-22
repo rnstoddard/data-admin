@@ -29,14 +29,8 @@ export class SrListComponent implements OnInit {
 
 @Component({
   selector: 'sr-sr-info',
-  template:`
-  <p *ngIf="sr">
-  {{sr.Issue_id}}
-  {{sr.SR_num}}
-  {{sr.cust_info_Cust_id}}
-  </p>
-  `,
   providers: [SrSrService],
+  templateUrl: './sr-sr-info.component.html',
   styleUrls: ['./sr-sr-info.component.css']
 })
 export class SrSrInfoComponent implements OnInit {
@@ -53,7 +47,8 @@ export class SrSrInfoComponent implements OnInit {
     let num = +this.route.snapshot.params['num'];
     this.srService.getSrByNum(num).subscribe(
       data => {
-        this.sr = data;},
+        this.sr = data;
+      },
       error =>{ console.log("this error was reached");}
     );
   }
